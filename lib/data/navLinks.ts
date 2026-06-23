@@ -1,0 +1,26 @@
+export const navLinks = [
+{
+name:"Home",
+href:"/"
+},
+{
+name:"About",
+href:"/about"
+},
+{
+name:"Destinations",
+href:"/destinations"
+},
+{
+name:"Tours",
+href:"/tours"
+},
+{
+name:"Services",
+href:"/services"
+},
+{
+name:"Contact",
+href:"/contact"
+}
+];
