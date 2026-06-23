@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-green-950 text-white py-28">
+      <section className="bg-primary text-white py-28">
         <Container>
           <div className="max-w-3xl">
             <h1 className="text-5xl font-bold mb-6">

@@ -6,7 +6,7 @@ export default function CTA() {
     <section className="py-24">
       <Container>
 
-        <div className="bg-primary rounded-3xl p-16 text-center text-black">
+        <div className="bg-primary rounded-3xl p-16 text-center text-white">
 
           <h2 className="text-5xl font-bold mb-6">
             Ready To Explore Rwanda?

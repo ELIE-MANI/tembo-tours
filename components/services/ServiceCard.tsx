@@ -42,11 +42,7 @@ export default function ServiceCard({
       <p className="text-gray-600 leading-7">
         {description}
       </p>
-<button
-className="mt-6 text-primary font-semibold"
->
-Learn More →
-</button>
+
     </div>
   );
 }
