@@ -1,72 +1,93 @@
 import Link from "next/link";
 
-export default function Footer() {
-  return (
-    <footer className="bg-[#0B3D1F] text-white mt-20">
+export default function Footer(){
 
-      <div className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-12">
+return(
 
-        {/* Company */}
+<footer className="bg-black text-gray-300">
 
-        <div>
-          <h2 className="text-2xl font-bold text-[#D4C097]">
-            Tembo Tours & Travel
-          </h2>
+<div className="max-w-7xl mx-auto px-6 py-20">
 
-          <p className="mt-4 text-gray-300">
-            Discover Rwanda with unforgettable experiences and premium travel services.
-          </p>
-        </div>
+<div className="grid md:grid-cols-4 gap-10">
 
-        {/* Quick Links */}
+<div>
 
-        <div>
-          <h3 className="font-semibold text-[#D4C097] mb-4">
-            Quick Links
-          </h3>
+<h3 className="text-2xl font-bold text-white mb-4">
 
-          <div className="space-y-3">
+Your Brand
 
-            <Link href="/">Home</Link>
+</h3>
 
-            <br />
+<p>
 
-            <Link href="/about">About</Link>
+Discover Rwanda with premium travel experiences.
 
-            <br />
+</p>
 
-            <Link href="/destinations">Destinations</Link>
+</div>
 
-            <br />
+<div>
 
-            <Link href="/tours">Tours</Link>
+<h4 className="text-white font-semibold mb-4">
 
-            <br />
+Quick Links
 
-            <Link href="/contact">Contact</Link>
+</h4>
 
-          </div>
-        </div>
+<div className="space-y-2">
 
-        {/* Contact */}
+<Link href="/">Home</Link><br/>
+<Link href="/about">About</Link><br/>
+<Link href="/tours">Tours</Link><br/>
+<Link href="/contact">Contact</Link>
 
-        <div>
-          <h3 className="font-semibold text-[#D4C097] mb-4">
-            Contact
-          </h3>
+</div>
 
-          <p>Email: info@tembotours.com</p>
+</div>
 
-          <p>Phone: +250 XXX XXX XXX</p>
+<div>
 
-          <p>Kigali, Rwanda</p>
-        </div>
+<h4 className="text-white font-semibold mb-4">
 
-      </div>
+Destinations
 
-      <div className="border-t border-gray-700 text-center py-6">
-        © 2026 Tembo Tours & Travel. All rights reserved.
-      </div>
-    </footer>
-  );
+</h4>
+
+<p>Kigali Hub</p>
+<p>Akagera National Park</p>
+<p>Volcano National Park</p>
+<p>Nyungwe National Park</p>
+
+</div>
+
+<div>
+
+<h4 className="text-white font-semibold mb-4">
+
+Contact
+
+</h4>
+
+<p>+250 xxx xxx xxx</p>
+<p>info@company.com</p>
+<p>Kigali, Rwanda</p>
+
+</div>
+
+</div>
+
+<hr className="my-10 border-gray-700"/>
+
+<p className="text-center">
+
+© 2026 Your Brand. All Rights Reserved.
+
+</p>
+
+</div>
+
+</footer>
+
+)
+
 }

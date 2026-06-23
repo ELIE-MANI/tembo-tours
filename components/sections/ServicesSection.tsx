@@ -4,6 +4,7 @@ Plane,
 Map,
 Car,
 Bus,
+ContactRound,
 } from "lucide-react";
 
 import { services } from "@/lib/data/services";
@@ -14,7 +15,7 @@ plane: Plane,
 map: Map,
 car: Car,
 bus: Bus,
-
+passport: ContactRound,
 };
 
 export default function Services() {
