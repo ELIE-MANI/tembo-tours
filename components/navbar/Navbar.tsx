@@ -1,34 +1,74 @@
+"use client";
+
 import Link from "next/link";
-import NavLinks from "./NavLinks";
+import { Menu } from "lucide-react";
+import { useState } from "react";
+import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
-  return (
-    <header className="sticky top-0 z-50 bg-[#0B3D1F] text-white shadow">
-      <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
 
-        {/* Logo */}
+const [open,setOpen]=useState(false);
 
-        <Link href="/">
-          <h1 className="text-2xl font-bold text-[#D4C097]">
-            Tembo Tours
-          </h1>
-        </Link>
+return (
 
-        {/* Desktop Navigation */}
+<header className="sticky top-0 z-50 bg-white shadow-sm">
 
-        <nav className="hidden md:flex items-center gap-8">
-          <NavLinks />
-        </nav>
+<div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-        {/* Book Now Button */}
+<Link
+href="/"
+className="text-2xl font-bold text-[#0B4F6C]"
+>
+YourBrand
+</Link>
 
-        <Link
-          href="/booking"
-          className="hidden md:block bg-[#D4C097] text-[#0B3D1F] px-5 py-3 rounded-xl font-semibold"
-        >
-          Book Now
-        </Link>
-      </div>
-    </header>
-  );
+<nav className="hidden md:flex gap-8 text-gray-700">
+
+<Link href="/">Home</Link>
+
+<Link href="/destinations">
+Destinations
+</Link>
+
+<Link href="/tours">
+Tours
+</Link>
+
+<Link href="/about">
+About
+</Link>
+
+<Link href="/contact">
+Contact
+</Link>
+
+</nav>
+
+<Link
+href="/booking"
+className="hidden md:block bg-[#F4B400] text-white px-5 py-3 rounded-full"
+>
+Book Now
+</Link>
+
+<button
+className="md:hidden text-black"
+onClick={()=>setOpen(true)}
+>
+
+<Menu size={30}/>
+
+</button>
+
+</div>
+
+<MobileMenu
+open={open}
+setOpen={setOpen}
+/>
+
+</header>
+
+)
+
 }
