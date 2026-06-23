@@ -37,6 +37,10 @@ Tours
 <Link href="/about">
 About
 </Link>
+<Link href="/services">
+Services
+</Link>
+
 
 <Link href="/contact">
 Contact
