@@ -1,4 +1,8 @@
 import Container from "../../components/ui/Container";
+import MissionVision from "../../components/about/MissionVision";
+import Stats from "../../components/about/Stats";
+import WhyChooseUs from "../../components/about/WhyChooseUs";
+import CTA from "../../components/about/CTA";
 
 export default function AboutPage() {
   return (
@@ -58,93 +62,13 @@ export default function AboutPage() {
   </Container>
 </section>
 
-<section className="bg-gray-50 py-24">
+ <MissionVision />
 
-  <Container>
+  <Stats />
 
-    <div className="grid md:grid-cols-2 gap-10">
+  <WhyChooseUs />
 
-      <div className="bg-white rounded-3xl p-10 shadow">
-
-        <h3 className="text-3xl font-bold mb-6">
-          Our Mission
-        </h3>
-
-        <p className="text-gray-600 leading-8">
-          To provide exceptional travel experiences
-          while promoting Rwanda's natural beauty
-          and cultural heritage.
-        </p>
-
-      </div>
-
-      <div className="bg-white rounded-3xl p-10 shadow">
-
-        <h3 className="text-3xl font-bold mb-6">
-          Our Vision
-        </h3>
-
-        <p className="text-gray-600 leading-8">
-          To become East Africa's leading travel
-          company known for professionalism,
-          innovation and customer satisfaction.
-        </p>
-
-      </div>
-
-    </div>
-
-  </Container>
-
-</section>
-
-<section className="py-24">
-
-  <Container>
-
-    <div className="grid md:grid-cols-4 gap-8 text-center">
-
-      <div>
-        <h2 className="text-5xl font-bold text-primary">
-          500+
-        </h2>
-        <p className="text-gray-600 mt-3">
-          Happy Travelers
-        </p>
-      </div>
-
-      <div>
-        <h2 className="text-5xl font-bold text-primary">
-          30+
-        </h2>
-        <p className="text-gray-600 mt-3">
-          Tour Packages
-        </p>
-      </div>
-
-      <div>
-        <h2 className="text-5xl font-bold text-primary">
-          10+
-        </h2>
-        <p className="text-gray-600 mt-3">
-          Years Experience
-        </p>
-      </div>
-
-      <div>
-        <h2 className="text-5xl font-bold text-primary">
-          24/7
-        </h2>
-        <p className="text-gray-600 mt-3">
-          Support
-        </p>
-      </div>
-
-    </div>
-
-  </Container>
-
-</section>
+  <CTA />
     </>
   );
 }
