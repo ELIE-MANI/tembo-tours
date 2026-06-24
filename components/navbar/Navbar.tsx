@@ -41,6 +41,9 @@ About
 Services
 </Link>
 
+<Link href="/booking">
+Bookings
+</Link>
 
 <Link href="/contact">
 Contact
