@@ -1,27 +1,55 @@
 export const tours = [
-
 {
 id:1,
-title:"3 Days Gorilla Trekking",
+title:"Gorilla Trekking",
+location:"Volcano National Park",
 duration:"3 Days",
-price:"$850",
-image:"/tours/gorilla.jpg"
+image:"/images/gorilla.jpg",
+price:"$1500"
 },
 
 {
 id:2,
-title:"Akagera Wildlife Safari",
+title:"Big Five Safari",
+location:"Akagera National Park",
 duration:"2 Days",
-price:"$600",
-image:"/tours/akagera.jpg"
+image:"/images/safari.jpg",
+price:"$900"
 },
 
 {
 id:3,
-title:"Lake Kivu Escape",
-duration:"4 Days",
-price:"$720",
-image:"/tours/lakekivu.jpg"
-}
+title:"Canopy Walk Adventure",
+location:"Nyungwe National Park",
+duration:"1 Day",
+image:"/images/canopy.jpg",
+price:"$250"
+},
 
+{
+id:4,
+title:"Lake Kivu Escape",
+location:"Karongi",
+duration:"2 Days",
+image:"/images/kivu.jpg",
+price:"$450"
+},
+
+{
+id:5,
+title:"Cultural Experience",
+location:"Kigali",
+duration:"1 Day",
+image:"/images/culture.jpg",
+price:"$180"
+},
+
+{
+id:6,
+title:"Kigali City Tour",
+location:"Kigali",
+duration:"1 Day",
+image:"/images/citytour.jpg",
+price:"$120"
+}
 ];
