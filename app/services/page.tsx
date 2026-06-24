@@ -1,54 +1,32 @@
-import Container from "@/components/ui/Container";
 import ServicesGrid from "@/components/services/ServicesGrid";
+import Container from "@/components/ui/Container";
 
 export default function ServicesPage() {
   return (
     <>
+   
+    <main className="bg-gray-50">
+
       {/* Hero */}
-      <section className="bg-primary py-28 text-white">
+      <section className="bg-[#009879] text-white py-24">
 
-        <Container>
+        <div className="max-w-7xl mx-auto px-6 text-center">
 
-          <div className="max-w-3xl">
+          <h1 className="text-5xl font-bold mb-6">
+            Our Services
+          </h1>
 
-            <h1 className="text-5xl font-bold mb-6">
-              Our Services
-            </h1>
+          <p className="max-w-3xl mx-auto text-lg">
+            From hotel reservations and flight tickets to Rwanda safaris and vehicle rentals, we provide complete travel solutions.
+          </p>
 
-            <p className="text-lg text-gray-200">
-              We provide comprehensive travel solutions
-              designed to make your journeys memorable,
-              comfortable and stress-free.
-            </p>
-
-          </div>
-
-        </Container>
+        </div>
 
       </section>
-
-      {/* Services */}
-      <section className="py-24">
-
-        <Container>
-
-          <div className="text-center mb-16">
-
-            <h2 className="text-4xl font-bold mb-5">
-              What We Offer
-            </h2>
-
-            <p className="text-gray-600">
-              Explore our professional travel services.
-            </p>
-
-          </div>
-
-          <ServicesGrid />
-
-        </Container>
-
-      </section>
+ <Container>
+      <ServicesGrid />
+</Container>
+    </main>
     </>
   );
 }

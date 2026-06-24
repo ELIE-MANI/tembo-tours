@@ -4,42 +4,49 @@ import {
   Map,
   Car,
   Bus,
-  ContactRound,
+  ContactIcon
 } from "lucide-react";
 
-type ServiceCardProps = {
+interface Props {
   title: string;
   description: string;
   icon: string;
-};
+}
 
 export default function ServiceCard({
   title,
   description,
   icon,
-}: ServiceCardProps) {
+}: Props) {
 
   const icons = {
-    hotel: <Hotel size={40} />,
-    plane: <Plane size={40} />,
-    map: <Map size={40} />,
-    car: <Car size={40} />,
-    bus: <Bus size={40} />,
-    passport: <ContactRound size={40} />,
+    hotel: Hotel,
+    plane: Plane,
+    map: Map,
+    car: Car,
+    bus: Bus,
+    passport: ContactIcon,
   };
 
-  return (
-    <div className="bg-white rounded-3xl shadow-md p-8 hover:-translate-y-2 transition duration-300">
+  const Icon = icons[icon as keyof typeof icons];
 
-      <div className="text-primary mb-6">
-        {icons[icon as keyof typeof icons]}
+  return (
+    <div className="bg-white rounded-3xl p-8 shadow-md hover:shadow-xl transition">
+
+      <div className="bg-[#009879]/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+
+        <Icon
+          size={30}
+          className="text-[#009879]"
+        />
+
       </div>
 
-      <h3 className="text-2xl font-semibold mb-4">
+      <h2 className="text-2xl font-bold mb-4">
         {title}
-      </h3>
+      </h2>
 
-      <p className="text-gray-600 leading-7">
+      <p className="text-gray-600">
         {description}
       </p>
 

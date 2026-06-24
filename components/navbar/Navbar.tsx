@@ -50,7 +50,7 @@ Contact
 
 <Link
 href="/booking"
-className="hidden md:block bg-[#F4B400] text-white px-5 py-3 rounded-full"
+className="hidden md:block bg-secondary text-white px-5 py-3 rounded-full"
 >
 Book Now
 </Link>
