@@ -1,23 +1,25 @@
 import { z } from "zod";
 
 export const ticketSchema = z.object({
-  departureCity: z.string().min(2),
+  departureCity: z.string().min(2, "Departure city required"),
 
-  destination: z.string().min(2),
-
-  travelDate: z.string().min(1),
+  destination: z.string().min(2, "Destination required"),
 
   returnTrip: z.boolean().optional(),
 
-  passengers: z.string().min(1),
+  travelDate: z.string().min(1, "Travel date required"),
 
-  firstName: z.string().min(2),
+  passengers: z.string().min(1, "Select passengers"),
 
-  lastName: z.string().min(2),
+  firstName: z.string().min(2, "First name required"),
 
-  email: z.string().email(),
+  lastName: z.string().min(2, "Last name required"),
 
-  phone: z.string().min(8),
+  email: z.string().email("Valid email required"),
+
+  phone: z.string().min(8, "Phone required"),
 
   requests: z.string().optional(),
 });
+
+export type TicketFormData = z.infer<typeof ticketSchema>;
