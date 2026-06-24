@@ -32,7 +32,7 @@ return(
 
 </div>
 
-<div className="mt-10 flex flex-col gap-8 text-lg">
+<div className="mt-10 flex flex-col gap-8 text-lg text-white">
 
 <Link href="/">Home</Link>
 
@@ -46,6 +46,10 @@ Tours
 
 <Link href="/about">
 About
+</Link>
+
+<Link href="/services">
+Services
 </Link>
 
 <Link href="/contact">

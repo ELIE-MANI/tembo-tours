@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+import Container from "../ui/Container";
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -48,6 +48,8 @@ export default function ContactForm() {
   }
 
   return (
+    <>
+    <Container>
     <div className="bg-white rounded-3xl shadow-lg p-8">
       <h2 className="text-3xl font-bold mb-6 text-gray-800">
         Send Us a Message
@@ -145,5 +147,7 @@ export default function ContactForm() {
         )}
       </form>
     </div>
+    </Container>
+    </>
   );
 }

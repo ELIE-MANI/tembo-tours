@@ -1,24 +1,34 @@
-import Container from "@/components/ui/Container";
+import ContactForm from "@/components/contact/ContactForm";
 import ContactInfo from "@/components/contact/ContactInfo";
-
 
 export default function ContactPage() {
   return (
-    <>
-      <section className="bg-primary py-28 text-white">
-        <Container>
-          <h1 className="text-5xl font-bold mb-6">
+    <main className="bg-gray-50 py-20">
+
+      <section className="max-w-7xl mx-auto px-6">
+
+        <div className="text-center mb-16">
+
+          <h1 className="text-5xl font-bold text-gray-900 mb-6">
             Contact Us
           </h1>
 
-          <p className="text-lg text-gray-200 max-w-2xl">
-            We are here to help you plan unforgettable experiences
-            throughout Rwanda and East Africa.
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            We are ready to help you plan unforgettable journeys across Rwanda and beyond.
           </p>
-        </Container>
-      </section>
-      <ContactInfo/>
 
-    </>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12">
+
+          <ContactForm />
+
+          <ContactInfo />
+
+        </div>
+
+      </section>
+
+    </main>
   );
 }

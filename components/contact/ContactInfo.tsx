@@ -1,40 +1,94 @@
-import { Phone, Mail, MapPin } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock
+} from "lucide-react";
 import Container from "../ui/Container";
 
 export default function ContactInfo() {
   return (
-    <section className="py-20">
-      <Container>
+    <>
+    <Container>
+    <div className="space-y-8">
 
-        <div className="grid md:grid-cols-3 gap-8">
+      <div className="bg-white p-8 rounded-3xl shadow-lg">
+        <h2 className="text-2xl font-bold mb-6">
+          Contact Information
+        </h2>
 
-          <div className="bg-white p-8 rounded-3xl shadow">
-            <Phone className="text-primary mb-4" size={40}/>
-            <h3 className="font-bold text-xl mb-3">
-              Phone
-            </h3>
-            <p>+250 XXX XXX XXX</p>
+        <div className="space-y-6">
+
+          <div className="flex gap-4">
+            <Phone className="text-[#009879]" />
+            <div>
+              <h3 className="font-semibold">Phone</h3>
+              <p className="text-gray-600">
+                +250 788 000 000
+              </p>
+            </div>
           </div>
 
-          <div className="bg-white p-8 rounded-3xl shadow">
-            <Mail className="text-primary mb-4" size={40}/>
-            <h3 className="font-bold text-xl mb-3">
-              Email
-            </h3>
-            <p>info@company.com</p>
+          <div className="flex gap-4">
+            <Mail className="text-[#009879]" />
+            <div>
+              <h3 className="font-semibold">Email</h3>
+              <p className="text-gray-600">
+                tembotours22@gmail.com
+              </p>
+            </div>
           </div>
 
-          <div className="bg-white p-8 rounded-3xl shadow">
-            <MapPin className="text-primary mb-4" size={40}/>
-            <h3 className="font-bold text-xl mb-3">
-              Address
-            </h3>
-            <p>Kigali, Rwanda</p>
+          <div className="flex gap-4">
+            <MapPin className="text-[#009879]" />
+            <div>
+              <h3 className="font-semibold">Address</h3>
+              <p className="text-gray-600">
+                Kigali, Rwanda
+              </p>
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <Clock className="text-[#009879]" />
+            <div>
+              <h3 className="font-semibold">
+                Working Hours
+              </h3>
+
+              <p className="text-gray-600">
+                Mon - Sat: 8AM - 6PM
+              </p>
+            </div>
           </div>
 
         </div>
+      </div>
 
-      </Container>
-    </section>
+      {/* WhatsApp Card */}
+
+      <div className="bg-[#009879] rounded-3xl p-8 text-white">
+
+        <h2 className="text-2xl font-bold mb-4">
+          Need Quick Assistance?
+        </h2>
+
+        <p className="mb-6 text-gray-100">
+          Chat with our travel consultants directly on WhatsApp.
+        </p>
+
+        <a
+          href="https://wa.me/250792588842"
+          target="_blank"
+          className="bg-white text-[#009879] px-6 py-3 rounded-xl font-semibold inline-block"
+        >
+          Chat on WhatsApp
+        </a>
+
+      </div>
+
+    </div>
+    </Container>
+    </>
   );
 }
