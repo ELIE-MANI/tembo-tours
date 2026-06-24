@@ -23,7 +23,7 @@ export default function TourBooking() {
     resolver: zodResolver(tourSchema),
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data : any) => {
     if (isSubmitting) return;
 
     setIsSubmitting(true);
