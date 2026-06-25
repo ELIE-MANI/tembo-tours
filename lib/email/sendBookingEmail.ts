@@ -1,8 +1,7 @@
 import { resend } from "./resend";
-import { bookingTemplate } from "./template";
+import { bookingDetailsTemplate } from "./bookingDetails";
 
 export async function sendBookingEmail(data: any) {
-
   const subjects: Record<string, string> = {
     hotel: "🏨 New Hotel Booking",
     ticket: "✈️ New Flight Ticket Booking",
@@ -11,12 +10,13 @@ export async function sendBookingEmail(data: any) {
   };
 
   return resend.emails.send({
-    from: "Tembo Tours <onboarding@resend.dev>",
-
+    from: "Tembo Travels <bookings@tembotravels.rw>",
     to: "tembotours22@gmail.com",
-
     subject: subjects[data.bookingType] || "New Booking",
+    html: `
+<h2>New Booking Received</h2>
 
-    html: bookingTemplate(data),
+${bookingDetailsTemplate(data)}
+`
   });
 }
