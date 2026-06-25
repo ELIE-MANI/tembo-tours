@@ -1,10 +1,14 @@
 import { sendBookingEmail } from "@/lib/email/sendBookingEmail";
-
+import { sendConfirmationEmail } from "@/lib/email/sendConfirmationEmail";
 export async function POST(req: Request) {
   try {
     const data = await req.json();
 
-    await sendBookingEmail(data);
+    await Promise.all([
+  sendBookingEmail(data),
+  sendConfirmationEmail(data),
+]);
+
 
     return Response.json({
       success: true,
