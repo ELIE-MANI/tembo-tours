@@ -1,29 +1,44 @@
 import DestinationsGrid from "@/components/destinations/DestinationsGrid";
+import Container from "@/components/ui/Container";
 
 export default function DestinationsPage() {
   return (
-    <main className="bg-gray-50">
-
+    <main className="bg-white">
+      
       {/* Hero Section */}
-      <section className="bg-[#009879] text-white py-24">
+      <section className="relative h-[70vh] flex items-center text-white overflow-hidden">
+        
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/images/destinations-hero.jpg')",
+          }}
+        />
 
-        <div className="max-w-7xl mx-auto px-6 text-center">
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/60" />
 
-          <h1 className="text-5xl font-bold mb-6">
-            Explore Rwanda
-          </h1>
+        <Container>
+          <div className="relative z-10 max-w-3xl mx-auto text-center mt-20">
+            <p className="uppercase tracking-[6px] text-[#D4A017] text-sm font-medium mb-6">
+              Explore Rwanda
+            </p>
 
-          <p className="max-w-3xl mx-auto text-lg">
-            Discover breathtaking landscapes, wildlife, culture, and unforgettable experiences throughout Rwanda.
-          </p>
+            <h1 className="text-5xl md:text-5xl font-bold leading-tight mb-6">
+              Discover Rwanda’s Hidden Wonders
+            </h1>
 
-        </div>
-
+            <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
+              From mountain gorillas and breathtaking volcanoes to lakes,
+              forests, and cultural treasures — Rwanda offers unforgettable adventures.
+            </p>
+          </div>
+        </Container>
       </section>
 
       {/* Destinations Grid */}
       <DestinationsGrid />
-
     </main>
   );
 }

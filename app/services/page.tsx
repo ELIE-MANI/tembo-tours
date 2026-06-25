@@ -20,7 +20,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0 bg-black/60" />
 
         <Container>
-          <div className="relative z-10 text-center max-w-3xl mx-auto">
+          <div className="relative z-10 text-center max-w-3xl mx-auto mt-20">
             <p className="uppercase tracking-[6px] text-[#D4A017] text-sm font-medium mb-6">
               Our Services
             </p>

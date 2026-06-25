@@ -21,7 +21,7 @@ description:"Home to the Big Five and spectacular wildlife safaris."
 id:3,
 name:"Nyungwe National Park",
 location:"Southern Province",
-image:"/images/nyungwe.jpg",
+image:"/images/nyungwe.jpeg",
 description:"Ancient rainforest famous for chimpanzee trekking and canopy walks."
 },
 
