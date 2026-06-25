@@ -21,14 +21,14 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="absolute top-0 left-0 w-full z-50">
+    <header className="absolute top-0 left-0 w-full z-50 body-font">
       <div className="backdrop-blur-md bg-black/20 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
           
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <div>
-              <h1 className="text-3xl font-bold text-white tracking-wide">
+              <h1 className="heading-font text-3xl font-bold text-white tracking-wide">
                 TEMBO
               </h1>
               <p className="text-xs text-white/80 uppercase tracking-[3px]">
