@@ -1,53 +1,59 @@
-export default function WhyChooseUs(){
+export default function WhyChooseUs() {
+  const stats = [
+    {
+      number: "10+",
+      label: "Years Experience",
+    },
+    {
+      number: "5000+",
+      label: "Happy Travelers",
+    },
+    {
+      number: "24/7",
+      label: "Customer Support",
+    },
+    {
+      number: "100%",
+      label: "Safe Journeys",
+    },
+  ];
 
-return(
+  return (
+    <section className="py-24 bg-[#0B3D1F] text-white">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold">
+            Why Choose Us
+          </h2>
 
-<section className="py-24 bg-[#0B4F6C] text-white">
+          {/* Decorative line */}
+          <div className="w-20 h-1 bg-[#D4A017] mx-auto rounded-full mt-4" />
 
-<div className="max-w-7xl mx-auto px-6">
+          <p className="text-white/80 mt-6 max-w-2xl mx-auto text-lg">
+            We provide trusted travel experiences with safety, comfort, and unforgettable adventures across Rwanda.
+          </p>
+        </div>
 
-<h2 className="text-4xl font-bold text-center mb-16">
+        {/* Stats Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {stats.map((item, index) => (
+            <div
+              key={index}
+              className="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-8 text-center hover:bg-white/15 transition duration-300"
+            >
+              <h3 className="text-4xl font-bold text-[#D4A017] mb-3">
+                {item.number}
+              </h3>
 
-Why Choose Us
-
-</h2>
-
-<div className="grid md:grid-cols-4 gap-8 text-center">
-
-<div>
-<h3 className="text-3xl font-bold text-secondary">
-10+
-</h3>
-<p>Years Experience</p>
-</div>
-
-<div>
-<h3 className="text-3xl font-bold text-secondary">
-5000+
-</h3>
-<p>Happy Travelers</p>
-</div>
-
-<div>
-<h3 className="text-3xl font-bold text-secondary">
-24/7
-</h3>
-<p>Customer Support</p>
-</div>
-
-<div>
-<h3 className="text-3xl font-bold text-secondary">
-100%
-</h3>
-<p>Safe Journeys</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-)
-
+              <p className="text-white/80 text-lg">
+                {item.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
