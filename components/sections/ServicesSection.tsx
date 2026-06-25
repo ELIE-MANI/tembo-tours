@@ -49,11 +49,11 @@ key={service.id}
 className="bg-white border rounded-2xl p-8 shadow-sm hover:shadow-xl transition duration-300"
 >
 
-<div className="w-16 h-16 rounded-full bg-[#F4B400]/10 flex items-center justify-center mb-6">
+<div className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-6">
 
 <Icon
 size={32}
-className="text-[#F4B400]"
+className="text-secondary"
 />
 
 </div>

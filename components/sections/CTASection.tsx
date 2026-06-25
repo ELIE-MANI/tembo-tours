@@ -22,7 +22,7 @@ Discover Rwanda's beauty with unforgettable experiences and premium services.
 
 <Link
 href="/contact"
-className="bg-[#F4B400] text-white px-10 py-4 rounded-full font-semibold hover:scale-105 transition"
+className="bg-secondary text-white px-10 py-4 rounded-full font-semibold hover:scale-105 transition"
 >
 
 Contact Us

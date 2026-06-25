@@ -15,28 +15,28 @@ Why Choose Us
 <div className="grid md:grid-cols-4 gap-8 text-center">
 
 <div>
-<h3 className="text-3xl font-bold text-[#F4B400]">
+<h3 className="text-3xl font-bold text-secondary">
 10+
 </h3>
 <p>Years Experience</p>
 </div>
 
 <div>
-<h3 className="text-3xl font-bold text-[#F4B400]">
+<h3 className="text-3xl font-bold text-secondary">
 5000+
 </h3>
 <p>Happy Travelers</p>
 </div>
 
 <div>
-<h3 className="text-3xl font-bold text-[#F4B400]">
+<h3 className="text-3xl font-bold text-secondary">
 24/7
 </h3>
 <p>Customer Support</p>
 </div>
 
 <div>
-<h3 className="text-3xl font-bold text-[#F4B400]">
+<h3 className="text-3xl font-bold text-secondary">
 100%
 </h3>
 <p>Safe Journeys</p>
