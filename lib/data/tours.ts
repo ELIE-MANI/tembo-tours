@@ -49,7 +49,7 @@ id:6,
 title:"Kigali City Tour",
 location:"Kigali",
 duration:"1 Day",
-image:"/images/citytour.jpg",
+image:"/images/citytour.jpeg",
 price:"$120"
 }
 ];
