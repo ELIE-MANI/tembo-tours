@@ -19,12 +19,12 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="py-24 bg-[#0B3D1F] text-white">
+    <section className="py-24 bg-[#0B3D1F] body-font text-white">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold">
+          <h2 className="heading-font text-4xl md:text-5xl font-bold">
             Why Choose Us
           </h2>
 

@@ -16,7 +16,7 @@ export default function DestinationCard({
   description,
 }: DestinationProps) {
   return (
-    <div className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition duration-300">
+    <div className="group body-font bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition duration-300">
       
       {/* Image */}
       <div className="relative h-72 overflow-hidden">
@@ -41,7 +41,7 @@ export default function DestinationCard({
         </div>
 
         {/* Name */}
-        <h2 className="text-2xl font-bold text-[#0B3D1F] mb-4">
+        <h2 className="heading-font text-2xl font-bold text-[#0B3D1F] mb-4">
           {name}
         </h2>
 

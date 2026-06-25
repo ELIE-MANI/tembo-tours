@@ -5,11 +5,11 @@ export default function ContactPage() {
   return (
     <main className="bg-gray-50 py-20">
 
-      <section className="max-w-7xl mx-auto px-6">
+      <section className="max-w-7xl mx-auto px-6 mt-20 body-font">
 
         <div className="text-center mb-16">
 
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="heading-font text-5xl font-bold text-gray-900 mb-6">
             Contact Us
           </h1>
 

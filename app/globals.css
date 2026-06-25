@@ -4,7 +4,18 @@
   --background: #ffffff;
   --foreground: #171717;
 }
+:root {
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+}
 
+.heading-font {
+  font-family: var(--font-heading);
+}
+
+.body-font {
+  font-family: var(--font-body);
+}
 @theme  {
    --color-primary: #0F4C81;
   --color-secondary: #F4B400;
@@ -17,7 +28,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
 }
 html{
 scroll-behavior:smooth;

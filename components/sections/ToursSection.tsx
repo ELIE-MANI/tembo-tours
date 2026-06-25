@@ -5,12 +5,12 @@ import { tours } from "@/lib/data/tours";
 
 export default function Tours() {
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24 body-font bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0B3D1F]">
+          <h2 className="heading-font text-4xl md:text-5xl font-bold text-[#0B3D1F]">
             Popular Tours
           </h2>
 

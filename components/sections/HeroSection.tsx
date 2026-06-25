@@ -3,7 +3,7 @@ import { Play, Compass, Users, Headphones, Leaf } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen text-white overflow-hidden">
+    <section className="relative min-h-screen body-font text-white overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -27,7 +27,7 @@ export default function HeroSection() {
           </p>
 
           {/* Heading */}
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+          <h1 className="heading-font text-5xl md:text-7xl font-bold leading-tight">
             Explore Rwanda <br />
             With Confidence
           </h1>

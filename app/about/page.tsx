@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[70vh] flex items-center text-white overflow-hidden">
+      <section className="relative h-[70vh] flex items-center body-font text-white overflow-hidden">
         
         {/* Background image */}
         <div
@@ -28,7 +28,7 @@ export default function AboutPage() {
               About Tembo Tours
             </p>
 
-            <h1 className="text-5xl md:text-5xl font-bold leading-tight mb-6">
+            <h1 className=" heading-font text-5xl md:text-5xl font-bold leading-tight mb-6">
               Your Trusted Travel Partner in Rwanda
             </h1>
 

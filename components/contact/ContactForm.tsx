@@ -63,7 +63,7 @@ export default function ContactForm() {
   return (
     <>
     <Container>
-    <div className="bg-white rounded-3xl shadow-lg p-8">
+    <div className="bg-white rounded-3xl shadow-lg p-8 body-font">
       <h2 className="text-3xl font-bold mb-6 text-gray-800">
         Send Us a Message
       </h2>

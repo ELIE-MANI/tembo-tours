@@ -50,11 +50,11 @@ export default function HotelBooking() {
   };
 
   return (
-    <section className="min-h-screen bg-[#F9F9F9] py-24">
+    <section className="min-h-screen bg-[#F9F9F9] py-24 body-font">
       <Container>
         <div className="bg-white p-10 rounded-2xl shadow-lg">
 
-          <h1 className="text-3xl font-bold mb-3 text-[#1A1A1A]">
+          <h1 className="heading-font text-3xl font-bold mb-3 text-[#1A1A1A]">
             Hotel Booking
           </h1>
 

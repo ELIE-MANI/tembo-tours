@@ -3,7 +3,7 @@ import { ArrowRight, Phone } from "lucide-react";
 
 export default function CTA() {
   return (
-    <section className="py-28 bg-[#0B3D1F] relative overflow-hidden">
+    <section className="py-28 bg-[#0B3D1F] body-font relative overflow-hidden">
       
       {/* Background glow */}
       <div className="absolute inset-0 bg-linear-to-r from-[#0B3D1F] via-[#14532d] to-[#0B3D1F]" />
@@ -11,7 +11,7 @@ export default function CTA() {
       <div className="relative max-w-4xl mx-auto px-6 text-center">
         
         {/* Heading */}
-        <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+        <h2 className="heading-font text-4xl md:text-6xl font-bold text-white leading-tight">
           Start Your Adventure Today
         </h2>
 

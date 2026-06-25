@@ -6,7 +6,7 @@ export default function ToursPage() {
     <main className="bg-white">
       
       {/* Hero */}
-      <section className="relative h-[70vh] flex items-center text-white overflow-hidden">
+      <section className="relative h-[70vh] body-font flex items-center text-white overflow-hidden">
         
         {/* Background */}
         <div
@@ -25,7 +25,7 @@ export default function ToursPage() {
               Tour Packages
             </p>
 
-            <h1 className="text-5xl md:text-5xl font-bold leading-tight mb-6">
+            <h1 className="heading-font text-5xl md:text-5xl font-bold leading-tight mb-6">
               Unforgettable Rwanda Adventures
             </h1>
 

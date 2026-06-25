@@ -10,10 +10,10 @@ export default function ContactInfo() {
   return (
     <>
     <Container>
-    <div className="space-y-8">
+    <div className="space-y-8 body-font">
 
       <div className="bg-white p-8 rounded-3xl shadow-lg">
-        <h2 className="text-2xl font-bold mb-6">
+        <h2 className="heading-font text-2xl font-bold mb-6">
           Contact Information
         </h2>
 
@@ -67,7 +67,7 @@ export default function ContactInfo() {
 
       {/* WhatsApp Card */}
 
-      <div className="bg-[#009879] rounded-3xl p-8 text-white">
+      <div className="bg-[#0B3D1F] rounded-3xl p-8 text-white">
 
         <h2 className="text-2xl font-bold mb-4">
           Need Quick Assistance?
@@ -80,7 +80,7 @@ export default function ContactInfo() {
         <a
           href="https://wa.me/250792588842"
           target="_blank"
-          className="bg-white text-[#009879] px-6 py-3 rounded-xl font-semibold inline-block"
+          className="bg-white text-[#0B3D1F] px-6 py-3 rounded-xl font-semibold inline-block"
         >
           Chat on WhatsApp
         </a>

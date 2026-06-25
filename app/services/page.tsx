@@ -6,7 +6,7 @@ export default function ServicesPage() {
     <main className="bg-white">
       
       {/* Hero */}
-      <section className="relative h-[65vh] flex items-center text-white overflow-hidden">
+      <section className="relative h-[65vh] flex body-font items-center text-white overflow-hidden">
         
         {/* Background */}
         <div
@@ -25,7 +25,7 @@ export default function ServicesPage() {
               Our Services
             </p>
 
-            <h1 className="text-5xl md:text-5xl font-bold leading-tight mb-6">
+            <h1 className="heading-font text-5xl md:text-5xl font-bold leading-tight mb-6">
               Complete Travel Solutions
             </h1>
 

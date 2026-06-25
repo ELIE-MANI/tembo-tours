@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0F172A] text-white ">
+    <footer className="bg-black body-font text-white ">
       <div className="container mx-auto px-6 py-14">
 
         <div className="grid md:grid-cols-4 gap-10">
 
           {/* Company */}
           <div>
-            <h3 className="text-2xl font-bold mb-4">
+            <h3 className="heading-font text-2xl font-bold mb-4">
               Rwanda Explore
             </h3>
 
@@ -21,7 +21,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">
+            <h4 className="heading-font font-semibold text-lg mb-4">
               Quick Links
             </h4>
 
@@ -36,7 +36,7 @@ export default function Footer() {
 
           {/* Destinations */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">
+            <h4 className="heading-font font-semibold text-lg mb-4">
               Top Destinations
             </h4>
 
@@ -50,13 +50,13 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">
+            <h4 className="heading-font font-semibold text-lg mb-4">
               Contact
             </h4>
 
             <div className="space-y-2 text-gray-300">
-              <p>info@rwandaexplore.com</p>
-              <p>+250 7XX XXX XXX</p>
+              <p>tembotours22@gmail.com</p>
+              <p>+250 794 107 972</p>
               <p>Kigali, Rwanda</p>
             </div>
           </div>

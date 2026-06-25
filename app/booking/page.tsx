@@ -33,12 +33,12 @@ const bookingCards = [
 
 export default function BookingPage() {
   return (
-    <section className="bg-[#F9F9F9] min-h-screen py-24">
+    <section className="bg-[#F9F9F9] min-h-screen py-24 mt-20 body-font">
       <Container>
 
         <div className="text-center max-w-3xl mx-auto mb-16">
 
-          <h1 className="text-5xl font-bold text-[#1A1A1A] mb-5">
+          <h1 className="heading-font text-5xl font-bold text-[#1A1A1A] mb-5">
             Booking Services
           </h1>
 
