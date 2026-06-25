@@ -40,7 +40,7 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
 
               return (
                 <Link
@@ -72,7 +72,7 @@ export default function Navbar() {
               </div>
 
               <div className="leading-tight">
-                <p className="font-semibold text-sm">+250 788 000 000</p>
+                <p className="font-semibold text-sm">+250 794 107 972</p>
                 <p className="text-xs text-white/70">
                   24/7 Customer Support
                 </p>
