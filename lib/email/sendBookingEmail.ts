@@ -1,5 +1,6 @@
 import { resend } from "./resend";
 import { bookingDetailsTemplate } from "./bookingDetails";
+import { emailLayout } from "./emailLayout";
 
 export async function sendBookingEmail(data: any) {
   const subjects: Record<string, string> = {
@@ -13,10 +14,16 @@ export async function sendBookingEmail(data: any) {
     from: "Tembo Travels <bookings@tembotravels.rw>",
     to: "tembotours22@gmail.com",
     subject: subjects[data.bookingType] || "New Booking",
-    html: `
-<h2>New Booking Received</h2>
+html: emailLayout(
+  "New Booking Received",
 
-${bookingDetailsTemplate(data)}
-`
+  `
+    <h2 style="color:#0B3D1F;">
+      New Booking Received
+    </h2>
+
+    ${bookingDetailsTemplate(data)}
+  `
+)
   });
 }
