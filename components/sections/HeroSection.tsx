@@ -10,6 +10,7 @@ export default function HeroSection() {
         style={{
           backgroundImage: "url('/images/rwanda-hero.jpg')",
         }}
+        
       />
 
       {/* Dark Overlay */}
