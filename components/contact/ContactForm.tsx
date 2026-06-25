@@ -31,6 +31,19 @@ export default function ContactForm() {
     try {
       // API call will come later
       console.log(formData);
+      const response = await fetch("/api/contact", {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed");
+      }
 
       setStatus("success");
 
@@ -131,7 +144,14 @@ export default function ContactForm() {
           disabled={loading}
           className="w-full bg-[#009879] hover:bg-[#007f66] text-white py-4 rounded-xl font-semibold transition"
         >
-          {loading ? "Sending..." : "Send Message"}
+         {loading ? (
+            <span className="flex items-center justify-center gap-2">
+              <span className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></span>
+              Sending...
+            </span>
+          ) : (
+            "Send Message"
+          )}
         </button>
 
         {status === "success" && (
