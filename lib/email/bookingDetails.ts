@@ -10,7 +10,32 @@ export function bookingDetailsTemplate(data: any) {
         <strong>Booking Type:</strong>
         ${data.bookingType || "-"}
       </p>
+      <p>
+        <strong>First Name:</strong>
+        ${data.firstName || "-"}
+        </p>
 
+        <p>
+        <strong>Last Name:</strong>
+        ${data.lastName || "-"}
+        </p>
+
+        <p>
+        <strong>Email:</strong>
+        ${data.email || "-"}
+        </p>
+
+        <p>
+        <strong>Phone:</strong>
+        ${data.phone || "-"}
+        </p>
+        
+        ${data.requests ? `
+        <p>
+        <strong>Special Requests:</strong>
+        ${data.requests}
+        </p>
+        ` : ""}
       ${data.destination ? `
       <p>
         <strong>Destination:</strong>
