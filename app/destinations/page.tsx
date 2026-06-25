@@ -1,5 +1,20 @@
 import DestinationsGrid from "@/components/destinations/DestinationsGrid";
 import Container from "@/components/ui/Container";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Destinations",
+  description:
+    "Discover Rwanda's top destinations including Kigali, Akagera National Park, Volcanoes National Park, Nyungwe Forest, Lake Kivu, and Gishwati-Mukura.",
+  keywords: [
+    "Rwanda Destinations",
+    "Kigali Tourism",
+    "Akagera National Park",
+    "Volcanoes National Park",
+    "Nyungwe Forest",
+    "Lake Kivu",
+  ],
+};
 
 export default function DestinationsPage() {
   return (

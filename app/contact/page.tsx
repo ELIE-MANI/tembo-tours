@@ -1,6 +1,18 @@
 import ContactForm from "@/components/contact/ContactForm";
 import ContactInfo from "@/components/contact/ContactInfo";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description:
+    "Contact Tembo Tours & Travel for tour inquiries, hotel reservations, safari bookings, transportation services, and customized travel experiences.",
+  keywords: [
+    "Contact Tembo Tours",
+    "Travel Agency Rwanda",
+    "Book Rwanda Tour",
+    "Rwanda Travel Contact",
+  ],
+};
 export default function ContactPage() {
   return (
     <main className="bg-gray-50 py-20">

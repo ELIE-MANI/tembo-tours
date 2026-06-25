@@ -1,6 +1,19 @@
 import ServicesGrid from "@/components/services/ServicesGrid";
 import Container from "@/components/ui/Container";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Travel Services",
+  description:
+    "Tembo Tours & Travel offers hotel reservations, flight bookings, tour packages, vehicle rentals, airport transfers, and visa assistance.",
+  keywords: [
+    "Travel Services Rwanda",
+    "Hotel Booking Rwanda",
+    "Vehicle Rental Rwanda",
+    "Airport Transfers Rwanda",
+    "Flight Booking Rwanda",
+  ],
+};
 export default function ServicesPage() {
   return (
     <main className="bg-white">

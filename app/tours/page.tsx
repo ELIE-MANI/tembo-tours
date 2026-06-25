@@ -1,5 +1,19 @@
 import ToursGrid from "@/components/tours/ToursGrid";
 import Container from "@/components/ui/Container";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Tour Packages",
+  description:
+    "Explore Rwanda through gorilla trekking, wildlife safaris, cultural experiences, and premium tour packages designed by Tembo Tours & Travel.",
+  keywords: [
+    "Rwanda Tours",
+    "Gorilla Trekking Rwanda",
+    "Akagera Safari",
+    "Rwanda Tour Packages",
+    "Nyungwe Tours",
+  ],
+};
 
 export default function ToursPage() {
   return (

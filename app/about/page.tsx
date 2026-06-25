@@ -3,6 +3,19 @@ import MissionVision from "../../components/about/MissionVision";
 import Stats from "../../components/about/Stats";
 import WhyChooseUs from "../../components/about/WhyChooseUs";
 import CTA from "../../components/about/CTA";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Learn about Tembo Tours & Travel, a trusted Rwanda travel company dedicated to creating unforgettable journeys across Rwanda and East Africa.",
+  keywords: [
+    "About Tembo Tours",
+    "Rwanda Travel Agency",
+    "Tour Company Rwanda",
+    "Travel Experts Rwanda",
+  ],
+};
 
 export default function AboutPage() {
   return (
