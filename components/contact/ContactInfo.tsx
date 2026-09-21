@@ -24,7 +24,7 @@ export default function ContactInfo() {
             <div>
               <h3 className="font-semibold">Phone</h3>
               <p className="text-gray-600">
-                +250 788 000 000
+                +250 794 107 972
               </p>
             </div>
           </div>
@@ -57,7 +57,7 @@ export default function ContactInfo() {
               </h3>
 
               <p className="text-gray-600">
-                Mon - Sat: 8AM - 6PM
+                Open 24/7
               </p>
             </div>
           </div>
