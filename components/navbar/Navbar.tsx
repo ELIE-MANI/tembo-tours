@@ -66,18 +66,26 @@ export default function Navbar() {
           {/* Right Side */}
           <div className="hidden lg:flex items-center gap-6">
             {/* Phone */}
-            <div className="flex items-center gap-3 text-white">
-              <div className="w-11 h-11 rounded-full border border-white/40 flex items-center justify-center">
+            <a
+              href="https://wa.me/250794107972"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 text-white"
+            >
+              <div className="w-11 h-11 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10 transition-colors">
                 <Phone size={18} />
               </div>
 
               <div className="leading-tight">
-                <p className="font-semibold text-sm">+250 794 107 972</p>
+                <p className="font-semibold text-sm">
+                  +250 794 107 972
+                </p>
+
                 <p className="text-xs text-white/70">
                   24/7 Customer Support
                 </p>
               </div>
-            </div>
+            </a>
 
             {/* CTA */}
             <Link
