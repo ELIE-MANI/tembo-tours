@@ -125,20 +125,14 @@ export default function TourBooking() {
                   )}
                 </div>
 
-                <FormField
-                  label="Travelers"
-                  name="travelers"
-                  register={register}
-                  error={errors.travelers}
-                  as="select"
-                  options={[
-                    "1 Traveler",
-                    "2 Travelers",
-                    "3 Travelers",
-                    "4 Travelers",
-                    "5+ Travelers",
-                  ]}
-                />
+               <FormField
+              label="Travelers"
+              name="travelers"
+              register={register}
+              error={errors.travelers}
+              type="number"
+              placeholder="Enter number of travelers"
+            />
               </div>
             </div>
 

@@ -111,19 +111,14 @@ export default function HotelBooking() {
                   )}
                 </div>
 
-                <FormField
-                  label="Guests"
-                  name="guests"
-                  register={register}
-                  error={errors.guests}
-                  as="select"
-                  options={[
-                    "1 Guest",
-                    "2 Guests",
-                    "3 Guests",
-                    "4 Guests",
-                  ]}
-                />
+              <FormField
+              label="Guests"
+              name="guests"
+              register={register}
+              error={errors.guests}
+              type="number"
+              placeholder="Enter number of guests"
+            />
 
                 <FormField
                   label="Room Type"

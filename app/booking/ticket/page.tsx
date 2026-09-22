@@ -106,20 +106,14 @@ export default function TicketBooking() {
                   )}
                 </div>
 
-                <FormField
-                  label="Passengers"
-                  name="passengers"
-                  register={register}
-                  error={errors.passengers}
-                  as="select"
-                  options={[
-                    "1 Passenger",
-                    "2 Passengers",
-                    "3 Passengers",
-                    "4 Passengers",
-                    "5+ Passengers",
-                  ]}
-                />
+               <FormField
+              label="Passengers"
+              name="passengers"
+              register={register}
+              error={errors.passengers}
+              type="number"
+              placeholder="Enter number of passengers"
+            />
 
               </div>
 
