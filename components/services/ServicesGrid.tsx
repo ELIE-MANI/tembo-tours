@@ -4,29 +4,28 @@ import { services } from "@/lib/data/services";
 export default function ServicesGrid() {
   return (
     <section className="py-24">
-      
-      {/* Intro */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#0B3D1F]">
+      <div className="mb-16 text-center">
+        <h2 className="text-4xl font-bold text-[#0B3D1F] md:text-5xl">
           What We Offer
         </h2>
 
-        <div className="w-20 h-1 bg-[#D4A017] mx-auto rounded-full mt-4" />
+        <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-[#D4A017]" />
 
-        <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">
-          Explore our wide range of travel services designed to make your
-          journey smooth, memorable, and stress-free.
+        <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-gray-600">
+          Whether you need a knowledgeable local guide, a professional
+          driver, comfortable accommodation, or help organizing your
+          entire trip, our services are designed around your travel needs.
         </p>
       </div>
 
-      {/* Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
           <ServiceCard
             key={service.id}
             title={service.title}
             description={service.description}
             icon={service.icon}
+            href={service.href}
           />
         ))}
       </div>

@@ -38,14 +38,16 @@ export default function ServicesPage() {
               Our Services
             </p>
 
-            <h1 className="heading-font text-5xl md:text-5xl font-bold leading-tight mb-6">
-              Complete Travel Solutions
-            </h1>
+         <h1 className="heading-font mb-6 text-5xl font-bold leading-tight md:text-6xl">
+          Travel Services Designed Around You
+        </h1>
 
-            <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
-              From hotel reservations and flight tickets to Rwanda safaris,
-              transport, and vehicle rentals — we handle every detail of your journey.
-            </p>
+            <p className="text-lg leading-relaxed mb-2 text-gray-200 md:text-xl">
+            From professional tour guides and private drivers to hotel
+            reservations, flight bookings, vehicle rentals, and airport
+            transfers, Tembo Travels helps you travel across Rwanda with
+            comfort and confidence.
+          </p>
           </div>
         </Container>
       </section>
