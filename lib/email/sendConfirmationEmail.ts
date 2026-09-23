@@ -1,39 +1,46 @@
 import { resend } from "./resend";
-import { bookingDetailsTemplate } from "./bookingDetails";
 import { emailLayout } from "./emailLayout";
+import { bookingDetailsTemplate } from "./bookingDetails";
 
 export async function sendConfirmationEmail(data: any) {
+  const subjects: Record<string, string> = {
+    hotel: "Hotel Booking Request Received",
+    ticket: "Flight Booking Request Received",
+    tour: "Tour Booking Request Received",
+    vehicle: "Vehicle Reservation Request Received",
+    guide: "Tour Guide Request Received",
+  };
+
+  const subject =
+    subjects[data.bookingType] || "Booking Request Received";
+
   return resend.emails.send({
     from: "Tembo Travels <bookings@tembotravels.rw>",
     to: data.email,
-    subject: "Booking Request Received",
- 
+    subject,
     html: emailLayout(
-  "Booking Confirmation",
+      subject,
+      `
+        <h2 style="color:#0B3D1F;">
+          Thank You For Choosing Tembo Travels
+        </h2>
 
-  `
-    <h2 style="color:#0B3D1F;">
-      Thank You For Choosing Tembo Travels
-    </h2>
+        <p>
+          Dear ${data.firstName},
+        </p>
 
-    <p>
-      Dear ${data.firstName},
-    </p>
+        <p>
+          We have successfully received your request.
+          Our travel consultants are reviewing the details
+          and will contact you shortly.
+        </p>
 
-    <p>
-      We have successfully received your booking request.
-    </p>
+        ${bookingDetailsTemplate(data)}
 
-    ${bookingDetailsTemplate(data)}
-
-    <p>
-      Our travel consultants are reviewing your request and will contact you within 24 hours.
-    </p>
-
-    <p>
-      Thank you for trusting Tembo Travels.
-    </p>
-  `
-)
+        <p>
+          Thank you for trusting Tembo Travels.
+        </p>
+      `
+    ),
   });
 }

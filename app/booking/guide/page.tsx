@@ -69,7 +69,7 @@ export default function GuideBookingPage() {
   }
 
   return (
-    <main className="bg-[#FAFAF8] py-20">
+    <main className="mt-6 bg-[#FAFAF8] py-20">
       <Container>
         <div className="mx-auto max-w-4xl pt-12">
 
