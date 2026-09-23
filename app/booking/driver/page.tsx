@@ -1,5 +1,5 @@
 "use client";
-
+import { driverSchema } from "@/lib/validations/driverSchema";
 import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
@@ -21,7 +21,9 @@ const initialForm = {
 };
 
 export default function DriverBookingPage() {
-  const [formData, setFormData] = useState(initialForm);
+    const today = new Date().toISOString().split("T")[0];
+
+    const [formData, setFormData] = useState(initialForm);
 
   const [loading, setLoading] = useState(false);
 
@@ -45,8 +47,13 @@ export default function DriverBookingPage() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    setLoading(true);
-    setStatus("idle");
+   const result = driverSchema.safeParse(formData);
+
+    if (!result.success) {
+    setStatus("error");
+    setLoading(false);
+    return;
+    }
 
     try {
       const response = await fetch("/api/bookings", {
@@ -130,39 +137,45 @@ export default function DriverBookingPage() {
 
                   {/* Gender */}
 
-                  <div>
-                    <label
-                      htmlFor="driverGender"
-                      className="mb-2 block text-sm font-semibold text-gray-800"
+                 <div>
+            <label className="mb-3 block text-sm font-semibold text-gray-800">
+                Driver Gender
+            </label>
+
+            <div className="grid grid-cols-3 gap-3">
+                {[
+                { value: "male", label: "Male" },
+                { value: "female", label: "Female" },
+                {
+                    value: "no-preference",
+                    label: "No Preference",
+                },
+                ].map((option) => {
+                const selected =
+                    formData.driverGender === option.value;
+
+                return (
+                    <button
+                    key={option.value}
+                    type="button"
+                    onClick={() =>
+                        setFormData((current) => ({
+                        ...current,
+                        driverGender: option.value,
+                        }))
+                    }
+                    className={`rounded-xl border px-4 py-3 text-sm font-medium transition ${
+                        selected
+                        ? "border-[#0B3D1F] bg-[#0B3D1F] text-white"
+                        : "border-gray-200 bg-white text-gray-700 hover:border-[#0B3D1F]"
+                    }`}
                     >
-                      Driver Gender
-                    </label>
-
-                    <select
-                      id="driverGender"
-                      name="driverGender"
-                      value={formData.driverGender}
-                      onChange={handleChange}
-                      required
-                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-[#0B3D1F] focus:ring-2 focus:ring-[#0B3D1F]/10"
-                    >
-                      <option value="">
-                        Select preference
-                      </option>
-
-                      <option value="male">
-                        Male
-                      </option>
-
-                      <option value="female">
-                        Female
-                      </option>
-
-                      <option value="no-preference">
-                        No Preference
-                      </option>
-                    </select>
-                  </div>
+                    {option.label}
+                    </button>
+                );
+                })}
+            </div>
+            </div>
 
                   {/* Language */}
 
@@ -356,13 +369,13 @@ export default function DriverBookingPage() {
                     </label>
 
                     <input
-                      id="travelDate"
-                      name="travelDate"
-                      type="date"
-                      value={formData.travelDate}
-                      onChange={handleChange}
-                      required
-                      className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-[#0B3D1F] focus:ring-2 focus:ring-[#0B3D1F]/10"
+                    id="travelDate"
+                    name="travelDate"
+                    type="date"
+                    min={today}
+                    value={formData.travelDate}
+                    onChange={handleChange}
+                    required
                     />
                   </div>
 
