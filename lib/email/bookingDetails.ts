@@ -274,6 +274,55 @@ export function bookingDetailsTemplate(data: any) {
           : ""
       }
 
+      ${
+  data.bookingType === "driver"
+    ? `
+      <h4 style="
+        color:#0B3D1F;
+        margin-top:25px;
+        margin-bottom:10px;
+      ">
+        Driver Service Details
+      </h4>
+
+      <p>
+        <strong>Driver Gender:</strong>
+        ${data.driverGender || "-"}
+      </p>
+
+      <p>
+        <strong>Preferred Language:</strong>
+        ${data.language || "-"}
+      </p>
+
+      <p>
+        <strong>Service Type:</strong>
+        ${data.serviceType || "-"}
+      </p>
+
+      <p>
+        <strong>Pickup Location:</strong>
+        ${data.pickupLocation || "-"}
+      </p>
+
+      <p>
+        <strong>Destination:</strong>
+        ${data.destination || "-"}
+      </p>
+
+      <p>
+        <strong>Travel Date:</strong>
+        ${data.travelDate || "-"}
+      </p>
+
+      <p>
+        <strong>Passengers:</strong>
+        ${data.passengers || "-"}
+      </p>
+    `
+    : ""
+}
+
       <!-- Special Requests -->
 
       ${

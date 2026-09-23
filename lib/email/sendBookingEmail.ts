@@ -9,6 +9,7 @@ export async function sendBookingEmail(data: any) {
     tour: "🌍 New Tour Package Booking",
     vehicle: "🚙 New Vehicle Reservation",
     guide: "🗺️ New Tour Guide Request",
+    driver: "🚗 New Driver Service Request",
   };
 
   return resend.emails.send({
