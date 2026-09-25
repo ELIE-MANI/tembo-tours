@@ -2,7 +2,7 @@
 import { guideSchema } from "@/lib/validations/guideSchema";
 import { FormEvent, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, CheckCircle2 } from "lucide-react";
+ import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import Container from "@/components/ui/Container";
 
 const initialForm = {
@@ -23,6 +23,7 @@ export default function GuideBookingPage() {
   const [formData, setFormData] = useState(initialForm);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   function handleChange(
     e: React.ChangeEvent<
@@ -37,15 +38,27 @@ export default function GuideBookingPage() {
     }));
   }
 
- async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
   e.preventDefault();
 
   setLoading(true);
   setStatus("idle");
+  setErrors({});
 
   const result = guideSchema.safeParse(formData);
 
   if (!result.success) {
+    const fieldErrors: Record<string, string> = {};
+
+    result.error.issues.forEach((issue) => {
+      const field = issue.path[0];
+
+      if (typeof field === "string" && !fieldErrors[field]) {
+        fieldErrors[field] = issue.message;
+      }
+    });
+
+    setErrors(fieldErrors);
     setStatus("error");
     setLoading(false);
     return;
@@ -63,18 +76,42 @@ export default function GuideBookingPage() {
       }),
     });
 
-    if (!response.ok) {
-      throw new Error("Failed to submit guide request");
+    const data = await response.json();
+
+    if (!response.ok || !data.success) {
+      throw new Error("Booking request failed");
     }
 
     setStatus("success");
-    setFormData(initialForm);
+
+    setFormData({
+      guideGender: "no-preference",
+      language: "",
+      destination: "",
+      travelDate: "",
+      travelers: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      requests: "",
+    });
   } catch (error) {
     console.error(error);
     setStatus("error");
   } finally {
     setLoading(false);
   }
+}
+
+function FieldError({ message }: { message?: string }) {
+  if (!message) return null;
+
+  return (
+    <p className="mt-2 text-sm text-red-600">
+      {message}
+    </p>
+  );
 }
 
   return (
@@ -191,26 +228,30 @@ export default function GuideBookingPage() {
                   </div>
 
                   {/* Destination */}
-                  <div>
-                    <label
-                      htmlFor="destination"
-                      className="mb-2 block text-sm font-semibold text-gray-800"
-                    >
-                      Destination
-                    </label>
+               <div>
+            <label className="mb-2 block text-sm font-semibold text-gray-800">
+            Destination
+            </label>
 
-                    <input
-                      id="destination"
-                      name="destination"
-                      type="text"
-                      value={formData.destination}
-                      onChange={handleChange}
-                      placeholder="e.g. Kigali, Musanze, Akagera..."
-                      required
-                      className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-[#0B3D1F] focus:ring-2 focus:ring-[#0B3D1F]/10"
-                    />
-                  </div>
+            <input
+            type="text"
+            value={formData.destination}
+            onChange={(e) =>
+                setFormData({
+                ...formData,
+                destination: e.target.value,
+                })
+            }
+            className={`w-full rounded-xl border px-4 py-3 outline-none transition ${
+                errors.destination
+                ? "border-red-400 focus:border-red-500"
+                : "border-gray-200 focus:border-[#0B3D1F]"
+            }`}
+            placeholder="e.g. Volcanoes National Park"
+            />
 
+            <FieldError message={errors.destination} />
+            </div>
                   {/* Travel date */}
                   <div>
                     <label
@@ -228,7 +269,10 @@ export default function GuideBookingPage() {
                     value={formData.travelDate}
                     onChange={handleChange}
                     required
+                    
                     />
+
+                <FieldError message={errors.travel} />
                   </div>
 
                   {/* Travelers */}
@@ -402,6 +446,7 @@ export default function GuideBookingPage() {
             </form>
           </div>
         </div>
+        
       </Container>
     </main>
   );
