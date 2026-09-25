@@ -1,6 +1,7 @@
 "use client";
+
 import { driverSchema } from "@/lib/validations/driverSchema";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import Container from "@/components/ui/Container";
@@ -20,16 +21,28 @@ const initialForm = {
   requests: "",
 };
 
-export default function DriverBookingPage() {
-    const today = new Date().toISOString().split("T")[0];
+function FieldError({ message }: { message?: string }) {
+  if (!message) return null;
 
-    const [formData, setFormData] = useState(initialForm);
+  return (
+    <p className="mt-2 text-sm text-red-600">
+      {message}
+    </p>
+  );
+}
+
+export default function DriverBookingPage() {
+  const today = new Date().toISOString().split("T")[0];
+
+  const [formData, setFormData] = useState(initialForm);
 
   const [loading, setLoading] = useState(false);
 
   const [status, setStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
+
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   function handleChange(
     e: React.ChangeEvent<
@@ -42,17 +55,58 @@ export default function DriverBookingPage() {
       ...current,
       [name]: value,
     }));
+
+    // Clear the error for this field when the user edits it.
+    setErrors((current) => ({
+      ...current,
+      [name]: "",
+    }));
   }
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  function handleGenderChange(value: string) {
+    setFormData((current) => ({
+      ...current,
+      driverGender: value,
+    }));
+
+    setErrors((current) => ({
+      ...current,
+      driverGender: "",
+    }));
+  }
+
+  async function handleSubmit(
+    e: React.FormEvent<HTMLFormElement>
+  ) {
     e.preventDefault();
 
-   const result = driverSchema.safeParse(formData);
+    setLoading(true);
+    setStatus("idle");
+    setErrors({});
 
+    // Validate the form using Zod.
+    const result = driverSchema.safeParse(formData);
+
+    // If validation fails, collect errors for each field.
     if (!result.success) {
-    setStatus("error");
-    setLoading(false);
-    return;
+      const fieldErrors: Record<string, string> = {};
+
+      result.error.issues.forEach((issue) => {
+        const field = issue.path[0];
+
+        if (
+          typeof field === "string" &&
+          !fieldErrors[field]
+        ) {
+          fieldErrors[field] = issue.message;
+        }
+      });
+
+      setErrors(fieldErrors);
+      setStatus("error");
+      setLoading(false);
+
+      return;
     }
 
     try {
@@ -62,16 +116,21 @@ export default function DriverBookingPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ...formData,
+          ...result.data,
           bookingType: "driver",
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to submit driver request");
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(
+          "Failed to submit driver request"
+        );
       }
 
       setStatus("success");
+
       setFormData(initialForm);
     } catch (error) {
       console.error("DRIVER REQUEST ERROR:", error);
@@ -109,9 +168,9 @@ export default function DriverBookingPage() {
             </h1>
 
             <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-600">
-              Tell us about your transportation needs and your driver
-              preferences. Our team will review your request and arrange
-              a suitable driver for your journey.
+              Tell us about your transportation needs and your
+              driver preferences. Our team will review your request
+              and arrange a suitable driver for your journey.
             </p>
 
           </div>
@@ -137,45 +196,57 @@ export default function DriverBookingPage() {
 
                   {/* Gender */}
 
-                 <div>
-            <label className="mb-3 block text-sm font-semibold text-gray-800">
-                Driver Gender
-            </label>
+                  <div>
+                    <label className="mb-3 block text-sm font-semibold text-gray-800">
+                      Driver Gender
+                    </label>
 
-            <div className="grid grid-cols-3 gap-3">
-                {[
-                { value: "male", label: "Male" },
-                { value: "female", label: "Female" },
-                {
-                    value: "no-preference",
-                    label: "No Preference",
-                },
-                ].map((option) => {
-                const selected =
-                    formData.driverGender === option.value;
+                    <div className="grid grid-cols-3 gap-3">
+                      {[
+                        {
+                          value: "male",
+                          label: "Male",
+                        },
+                        {
+                          value: "female",
+                          label: "Female",
+                        },
+                        {
+                          value: "no-preference",
+                          label: "No Preference",
+                        },
+                      ].map((option) => {
+                        const selected =
+                          formData.driverGender ===
+                          option.value;
 
-                return (
-                    <button
-                    key={option.value}
-                    type="button"
-                    onClick={() =>
-                        setFormData((current) => ({
-                        ...current,
-                        driverGender: option.value,
-                        }))
-                    }
-                    className={`rounded-xl border px-4 py-3 text-sm font-medium transition ${
-                        selected
-                        ? "border-[#0B3D1F] bg-[#0B3D1F] text-white"
-                        : "border-gray-200 bg-white text-gray-700 hover:border-[#0B3D1F]"
-                    }`}
-                    >
-                    {option.label}
-                    </button>
-                );
-                })}
-            </div>
-            </div>
+                        return (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() =>
+                              handleGenderChange(
+                                option.value
+                              )
+                            }
+                            className={`rounded-xl border px-4 py-3 text-sm font-medium transition ${
+                              selected
+                                ? "border-[#0B3D1F] bg-[#0B3D1F] text-white"
+                                : errors.driverGender
+                                ? "border-red-400 bg-white text-gray-700"
+                                : "border-gray-200 bg-white text-gray-700 hover:border-[#0B3D1F]"
+                            }`}
+                          >
+                            {option.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    <FieldError
+                      message={errors.driverGender}
+                    />
+                  </div>
 
                   {/* Language */}
 
@@ -192,8 +263,11 @@ export default function DriverBookingPage() {
                       name="language"
                       value={formData.language}
                       onChange={handleChange}
-                      required
-                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-[#0B3D1F] focus:ring-2 focus:ring-[#0B3D1F]/10"
+                      className={`w-full rounded-xl border bg-white px-4 py-3 outline-none transition focus:ring-2 focus:ring-[#0B3D1F]/10 ${
+                        errors.language
+                          ? "border-red-400 focus:border-red-500"
+                          : "border-gray-200 focus:border-[#0B3D1F]"
+                      }`}
                     >
                       <option value="">
                         Select language
@@ -227,6 +301,10 @@ export default function DriverBookingPage() {
                         Other
                       </option>
                     </select>
+
+                    <FieldError
+                      message={errors.language}
+                    />
                   </div>
 
                   {/* Service type */}
@@ -244,8 +322,11 @@ export default function DriverBookingPage() {
                       name="serviceType"
                       value={formData.serviceType}
                       onChange={handleChange}
-                      required
-                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-[#0B3D1F] focus:ring-2 focus:ring-[#0B3D1F]/10"
+                      className={`w-full rounded-xl border bg-white px-4 py-3 outline-none transition focus:ring-2 focus:ring-[#0B3D1F]/10 ${
+                        errors.serviceType
+                          ? "border-red-400 focus:border-red-500"
+                          : "border-gray-200 focus:border-[#0B3D1F]"
+                      }`}
                     >
                       <option value="">
                         Select service
@@ -275,6 +356,10 @@ export default function DriverBookingPage() {
                         Other
                       </option>
                     </select>
+
+                    <FieldError
+                      message={errors.serviceType}
+                    />
                   </div>
 
                   {/* Passengers */}
@@ -295,8 +380,15 @@ export default function DriverBookingPage() {
                       value={formData.passengers}
                       onChange={handleChange}
                       placeholder="e.g. 3"
-                      required
-                      className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-[#0B3D1F] focus:ring-2 focus:ring-[#0B3D1F]/10"
+                      className={`w-full rounded-xl border px-4 py-3 outline-none transition focus:ring-2 focus:ring-[#0B3D1F]/10 ${
+                        errors.passengers
+                          ? "border-red-400 focus:border-red-500"
+                          : "border-gray-200 focus:border-[#0B3D1F]"
+                      }`}
+                    />
+
+                    <FieldError
+                      message={errors.passengers}
                     />
                   </div>
 
@@ -331,8 +423,15 @@ export default function DriverBookingPage() {
                       value={formData.pickupLocation}
                       onChange={handleChange}
                       placeholder="e.g. Kigali International Airport"
-                      required
-                      className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-[#0B3D1F] focus:ring-2 focus:ring-[#0B3D1F]/10"
+                      className={`w-full rounded-xl border px-4 py-3 outline-none transition focus:ring-2 focus:ring-[#0B3D1F]/10 ${
+                        errors.pickupLocation
+                          ? "border-red-400 focus:border-red-500"
+                          : "border-gray-200 focus:border-[#0B3D1F]"
+                      }`}
+                    />
+
+                    <FieldError
+                      message={errors.pickupLocation}
                     />
                   </div>
 
@@ -353,8 +452,15 @@ export default function DriverBookingPage() {
                       value={formData.destination}
                       onChange={handleChange}
                       placeholder="e.g. Kigali City"
-                      required
-                      className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-[#0B3D1F] focus:ring-2 focus:ring-[#0B3D1F]/10"
+                      className={`w-full rounded-xl border px-4 py-3 outline-none transition focus:ring-2 focus:ring-[#0B3D1F]/10 ${
+                        errors.destination
+                          ? "border-red-400 focus:border-red-500"
+                          : "border-gray-200 focus:border-[#0B3D1F]"
+                      }`}
+                    />
+
+                    <FieldError
+                      message={errors.destination}
                     />
                   </div>
 
@@ -369,13 +475,21 @@ export default function DriverBookingPage() {
                     </label>
 
                     <input
-                    id="travelDate"
-                    name="travelDate"
-                    type="date"
-                    min={today}
-                    value={formData.travelDate}
-                    onChange={handleChange}
-                    required
+                      id="travelDate"
+                      name="travelDate"
+                      type="date"
+                      min={today}
+                      value={formData.travelDate}
+                      onChange={handleChange}
+                      className={`w-full rounded-xl border px-4 py-3 outline-none transition focus:ring-2 focus:ring-[#0B3D1F]/10 ${
+                        errors.travelDate
+                          ? "border-red-400 focus:border-red-500"
+                          : "border-gray-200 focus:border-[#0B3D1F]"
+                      }`}
+                    />
+
+                    <FieldError
+                      message={errors.travelDate}
                     />
                   </div>
 
@@ -409,8 +523,15 @@ export default function DriverBookingPage() {
                       type="text"
                       value={formData.firstName}
                       onChange={handleChange}
-                      required
-                      className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-[#0B3D1F] focus:ring-2 focus:ring-[#0B3D1F]/10"
+                      className={`w-full rounded-xl border px-4 py-3 outline-none transition focus:ring-2 focus:ring-[#0B3D1F]/10 ${
+                        errors.firstName
+                          ? "border-red-400 focus:border-red-500"
+                          : "border-gray-200 focus:border-[#0B3D1F]"
+                      }`}
+                    />
+
+                    <FieldError
+                      message={errors.firstName}
                     />
                   </div>
 
@@ -430,8 +551,15 @@ export default function DriverBookingPage() {
                       type="text"
                       value={formData.lastName}
                       onChange={handleChange}
-                      required
-                      className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-[#0B3D1F] focus:ring-2 focus:ring-[#0B3D1F]/10"
+                      className={`w-full rounded-xl border px-4 py-3 outline-none transition focus:ring-2 focus:ring-[#0B3D1F]/10 ${
+                        errors.lastName
+                          ? "border-red-400 focus:border-red-500"
+                          : "border-gray-200 focus:border-[#0B3D1F]"
+                      }`}
+                    />
+
+                    <FieldError
+                      message={errors.lastName}
                     />
                   </div>
 
@@ -451,8 +579,15 @@ export default function DriverBookingPage() {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      required
-                      className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-[#0B3D1F] focus:ring-2 focus:ring-[#0B3D1F]/10"
+                      className={`w-full rounded-xl border px-4 py-3 outline-none transition focus:ring-2 focus:ring-[#0B3D1F]/10 ${
+                        errors.email
+                          ? "border-red-400 focus:border-red-500"
+                          : "border-gray-200 focus:border-[#0B3D1F]"
+                      }`}
+                    />
+
+                    <FieldError
+                      message={errors.email}
                     />
                   </div>
 
@@ -473,8 +608,15 @@ export default function DriverBookingPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+250..."
-                      required
-                      className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-[#0B3D1F] focus:ring-2 focus:ring-[#0B3D1F]/10"
+                      className={`w-full rounded-xl border px-4 py-3 outline-none transition focus:ring-2 focus:ring-[#0B3D1F]/10 ${
+                        errors.phone
+                          ? "border-red-400 focus:border-red-500"
+                          : "border-gray-200 focus:border-[#0B3D1F]"
+                      }`}
+                    />
+
+                    <FieldError
+                      message={errors.phone}
                     />
                   </div>
 
@@ -529,14 +671,15 @@ export default function DriverBookingPage() {
                 </div>
               )}
 
-              {/* Error */}
+              {/* API Error */}
 
-              {status === "error" && (
-                <div className="rounded-2xl bg-red-50 p-5 text-sm text-red-700">
-                  Something went wrong while submitting your request.
-                  Please try again.
-                </div>
-              )}
+              {status === "error" &&
+                Object.keys(errors).length === 0 && (
+                  <div className="rounded-2xl bg-red-50 p-5 text-sm text-red-700">
+                    Something went wrong while submitting your
+                    request. Please try again.
+                  </div>
+                )}
 
               {/* Submit */}
 
