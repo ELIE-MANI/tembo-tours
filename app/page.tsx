@@ -5,7 +5,7 @@ import ServicesSection from "@/components/sections/ServicesSection";
 import DestinationsSection from "@/components/sections/DestinationsSection";
 import ToursSection from "@/components/sections/ToursSection";
 import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection";
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import GoogleReviewsSection from "@/components/sections/GoogleReviewsSection";
 import CTASection from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ export default function Home() {
       <DestinationsSection />
       <ToursSection />
       <WhyChooseUsSection />
-      <TestimonialsSection />
+      <GoogleReviewsSection/>
       <CTASection />
     </>
   );
